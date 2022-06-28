@@ -28,6 +28,15 @@ public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>, 
         _dateTime = dateTime;
     }
 
+
+    public DbSet<Producto> Producto => Set<Producto>();
+
+    public DbSet<Precio> Precio => Set<Precio>();
+
+    public DbSet<Categoria> Categoria => Set<Categoria>();
+
+    public DbSet<ProductoCategoria> ProductoCategoria => Set<ProductoCategoria>();
+
     public DbSet<TodoList> TodoLists => Set<TodoList>();
 
     public DbSet<TodoItem> TodoItems => Set<TodoItem>();
@@ -39,13 +48,13 @@ public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>, 
             switch (entry.State)
             {
                 case EntityState.Added:
-                    entry.Entity.CreatedBy = _currentUserService.UserId;
-                    entry.Entity.Created = _dateTime.Now;
+                    entry.Entity.UsuarioInsert = _currentUserService.UserId;
+                    entry.Entity.FechaInsert = _dateTime.Now;
                     break;
 
                 case EntityState.Modified:
-                    entry.Entity.LastModifiedBy = _currentUserService.UserId;
-                    entry.Entity.LastModified = _dateTime.Now;
+                    entry.Entity.UsuarioUpdate = _currentUserService.UserId;
+                    entry.Entity.FechaUpdate = _dateTime.Now;
                     break;
             }
         }

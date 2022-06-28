@@ -2,11 +2,12 @@
 
 public abstract class AuditableEntity
 {
-    public DateTime Created { get; set; }
+    public string Status { get; set; } = "A";
+    public DateTime FechaInsert { get; set; }
 
-    public string? CreatedBy { get; set; }
+    public string? UsuarioInsert { get; set; }
 
-    public DateTime? LastModified { get; set; }
+    public DateTime? FechaUpdate { get; set; }
 
-    public string? LastModifiedBy { get; set; }
+    public string? UsuarioUpdate { get; set; }
 }

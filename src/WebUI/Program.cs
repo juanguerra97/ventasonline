@@ -25,7 +25,9 @@ builder.Services.AddHealthChecks()
     .AddDbContextCheck<ApplicationDbContext>();
 
 builder.Services.AddControllersWithViews(options =>
-    options.Filters.Add<ApiExceptionFilterAttribute>())
+{
+    options.Filters.Add<ApiExceptionFilterAttribute>();
+})
         .AddFluentValidation(x => x.AutomaticValidationEnabled = false);
 
 builder.Services.AddRazorPages();
